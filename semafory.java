@@ -26,10 +26,10 @@ private static final int DELAY = 5; //delay, in milliseconds, used to put a thre
  try {
  for (int i = 0; i < COUNT; i++) {
  //use semaphores here
-a.acquire();
+
  System.out.print("A ");
  //use semaphores here
-b.release();
+
  Thread.sleep(DELAY);
  }
  } catch (InterruptedException ex) {
@@ -49,10 +49,10 @@ private static final class B extends Thread {
  try {
  for (int i = 0; i < COUNT; i++) {
  //use semaphores here
-b.acquire();
+
  System.out.print("B ");
  //use semaphores here
-c.release();
+
  Thread.sleep(DELAY);
  }
  } catch (InterruptedException ex) {
@@ -72,10 +72,10 @@ System.out.println("\nThread B: I'm done...");
  try {
  for (int i = 0; i < COUNT; i++) {
  //use semaphores here
-c.acquire();
+
  System.out.print("C ");
  //use semaphores here
-a.release();
+
  Thread.sleep(DELAY);
  }
  } catch (InterruptedException ex) {
