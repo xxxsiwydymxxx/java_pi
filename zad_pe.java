@@ -22,7 +22,7 @@ public class Zad_EP {
             try {
 //                PSEM.acquire();
                 A = 10;
-                PSEM.acquire();
+//                PSEM.acquire();
                 B = B + 5;
 //                PSEM.acquire();
                 C = C + A; 
@@ -44,7 +44,7 @@ public class Zad_EP {
         @Override
         public void run() {
             try {
-                PSEM.acquire();
+//                PSEM.acquire();
                 B = B + C;
 //                PSEM.acquire(); 
                 A = A + B;
@@ -72,7 +72,7 @@ public class Zad_EP {
                 A = 2 * A;
 //                PSEM.acquire();
                 B = B + A;
-                PSEM.acquire();
+//                PSEM.acquire();
                 Thread.sleep(0);
                 System.out.println("Thread P3 is done...");
 
