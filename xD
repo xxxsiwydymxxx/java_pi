@@ -1,0 +1,30 @@
+#include <iostream>
+#include <string>    // added 
+using namespace std;
+
+struct person {
+    string Name;
+    string Address;
+    string PhoneNumber;
+    string Email;
+};
+
+int main() {
+    int userselection = 0;
+
+    cout << "What do you want to do? Press 1 to Add Contact -- Press 2 to Search for Contact"<<endl;
+    cin >> userselection;
+
+    if(userselection == 1) { // userselection is int so why compare it to char
+        person newPerson;
+        cout << "What is your Name?" << endl;
+        cin >> newPerson.Name; // assign to object's member not a static member
+        cout << "What is your Address?" << endl;
+        cin >> newPerson.Address;
+        cout << "What is your Phone Number?" << endl;
+        cin >> newPerson.PhoneNumber;
+        cout << "What is your Email?" << endl;
+        cin >> newPerson.Email;
+    }
+
+}
