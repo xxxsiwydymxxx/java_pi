@@ -1,0 +1,264 @@
+((AD)) -> Ak
+	wyad wea
+	czyt wys weja przep weak
+======================================
+	
+(Ak) shl 1 -> 0 // przesuniecie logiczne o 1 bit w lewo (maszyna W+)
+	wyak weja dod weak;
+	wyak wes;
+	pisz;
+======================================
+
+ABS |((Ad))| -> Ak
+	czyt wys wei il;
+	wyad wea;
+	czyt wys weja przep weak;
+	JEZELI Z TO @ujemne GDY NIE @nieujemne;
+	@ujemne wyak weja ode weak;
+	wys weja ode weak wyl wea KONIEC;
+	@nieujemne wyl wea;
+======================================	
+	
+DDP (Ak) + (((Ad))) -> Ak /W+
+	ROZKAZ DDP;
+	czyt wys wei il;
+	wyad wea;
+	czyt wys as wea;
+	czyt wys weja dod weak;
+	wyl wea;
+======================================	
+
+|((L))| -> Ak /W+
+	//jezeli dodatnia
+	wyl wea;
+	czyt wys sa wea;
+	czyt wys weja przep weak;
+	
+	//ujemna
+	wyl as weja ode weak;
+	wyak sa wel;
+	wyak weja ode weak;
+	wyl wea;
+	czyt wys sa wea;
+	czyt wys weja przep weak;
+======================================	
+	
+|(Ak)| -> (2) /W+
+	//jezeli dodatnia
+	il;
+	il;
+	wyl wea;
+	czyt wys sa wea;
+	wyak wes;
+	pisz;	
+	
+	//jezeli ujemna
+	wyak wes weja ode weak il;
+	wys weja ode weak il;
+	wyl wea;
+	czyt wys sa wea;
+	wyak wes;
+	pisz;	
+======================================	
+
+MIN min( (Ak), ((Ad)) ) -> Ak
+	rozkaz MIN;
+	argumenty 1;
+	czyt wys wei il;
+	wyad wea;
+	czyt wys weja ode weak;
+	JEZELI Z TO @ujemne GDY NIE @dodatnie
+	@ujemne wys weja dod weak wyl wea KONIEC;
+	@dodatnie wys weja przep weak wyl wea;
+======================================	
+	
+ZAM ((Ad)) <-> ((L)+1) // zamiana zawartosci obydwu komorek /W+
+	ROZKAZ ZAM;
+	Argument 1;
+	czyt wys wei il;
+	wyad wea;
+	czyt wys weja przep weak;
+	wyl wea  ;
+	czyt wyad wea ;
+	pisz;
+	wyl wea wyak wes il;
+	pisz wyl wea stop;
+======================================	
+
+(Ak) - ((L)) -> Ak /W+
+	wyl wea;
+	czyt wys sa wea;
+	czyt wys weja ode weak;
+======================================	
+	
+(Ad) - (Ak) -> 1
+	wyak wes;
+	wyad as weja przep weak;
+	wys weja ode weak;
+	wyak wes weja ode weak;
+	wyak sa wel;
+	il;
+	wyl wea;
+	pisz;
+======================================	
+
+PGM jezeli (Ak) < ((Ad)) to (L) + 2 -> L w przeciwnym razie (L)+1-> L // pomin jeden rozkaz
+	ROZKAZ PGM;
+	czyt wys wei il;
+	wyad wea;
+	czyt wys weja ode weak;
+	JEZELI Z TO @less GDY NIE @greq;
+	@less il KONIEC;
+	@greq KONIEC;
+======================================	
+	
+DIS (Ak) - 1 -> Ak a nastepnie gdy (Ak) < 0 to (Ad)-> L, w przeciwnym razie (L)+1 -> L /W+
+	rozkaz DIS;
+	argumenty 1;
+	czyt wys wei il;
+	wyl as wes weja dod weak il;
+	wyl as weja ode weak;
+	JEZELI Z TO @ujemne GDY NIE @dodatnie;
+	@ujemne wyad wel wea KONIEC;
+	@dodatnie wys sa wel wea;
+======================================	
+
+2 * (Ak) -> Ak
+	wyak weja dod weak;
+======================================	
+	
+(0) + (1) -> (Ad) /W+
+	wyak weja ode weak;
+	wyak sa wel wea;
+	czyt wys weja przep weak il;
+	wyl wea;
+	czyt wys weja dod weak;
+	wyad wea wyak wes;
+	pisz;
+======================================	
+
+SNZ jezeli (Ak) != 0 to (Ad) -> L w przeciwnym razie (L)+1 -> L // skok gdy nie zero
+	ROZKAZ SNZ;
+	Argument 1;
+	czyt wys wei il;
+	wyad wea;
+	czyt wys weja przep weak;
+	JEZELI zak to @zero GDY NIE @niezero;
+	@niezero wyad wel wea KONIEC;
+	@zero wyl wea stop;
+======================================	
+	
+SAW (L) + (Ad) -> L // skok z adresacja wzgledna wzgledem licznika rozkazow /W+
+	czyt wys wei il;
+	wyl as weja przep weak;
+	wyad as weja dod weak;
+	wyl as weja dod weak il;
+	wyl as weja ode weak;
+	wyak sa wel wea;
+======================================	
+	
+(Ak) -> (L)
+	wyak wes wyl wea;
+	pisz;
+======================================	
+	
+((Ad)+1) - ((Ad)) -> Ak /W+
+	wyad wel wea;
+	czyt wys weja przep weak il;
+	wyak weja ode weak;
+	wyak weja ode weak;
+	wyl wea;
+	czyt wys weja dod weak;
+======================================	
+
+- (AK) -> (Ad)
+	wyak wes weja ode weak wyad wea;
+	wys weja ode weak;
+	wyak wes;
+	pisz;
+======================================	
+	
+(Ak)+((L)) -> (L)+1
+	wyl wea;
+	czyt wys weja dod weak il;
+	wyl wea wyak wes;
+	pisz;
+======================================	
+
+(Ak) + (S) -> (Ad)
+	wys weja dod weak;
+	wyad wea wyak wes;
+	pisz;
+======================================	
+	
+((Ad)) + (Ak) -> (L)+1
+	wyad wea;
+	czyt wys weja dod weak il;
+	wyl wea wyak wes; 
+	pisz;
+======================================	
+
+SAW (L) + (Ad) -> L // skok z adresacja wzgledna wzgledem licznika rozkazow /W+
+	czyt wys wei il;
+	wyl as weja przep weak;
+	wyad as weja dod weak;
+	wyl as weja dod weak il;
+	wyl as weja ode weak;
+	wyak sa wel wea;
+======================================	
+
+|(Ak)| -> (L) /W+
+	//dodatnia liczba w ak
+	wyak wes weja ode weak;
+ 	wyak sa wel;
+ 	il;
+ 	il;
+ 	wyl wea;
+	pisz; 
+======================================	
+	
+	// jezeli jest ujemna liczba w Ak 
+	wyak wes weja ode weak;
+ 	wys weja ode weak;
+ 	wyak wes weja ode weak; 
+	wyak sa wel;
+ 	il; 
+	il;
+ 	wyl wea; 
+	pisz
+======================================	
+	
+((Ad)) + ((Ad)+1) -> Ak
+	wyad wea wel;
+	czyt wys weja przep weak il;
+	wyl wea;
+	czyt wys weja dod weak;
+======================================	
+
+(Ak) shl 1 -> 0 // przesuniecie logiczne o 1 bit w lewo, maszyna /W+
+	wyak weja dod weak;
+	wyak wes weja ode weak;
+	wyak sa wea;
+	pisz;
+======================================	
+
+ZAM ((Ad)) <-> ((L)+1) // zamiana zawartosci obydwu komorek /W+
+	ROZKAZ ZAM;
+	Argument 1;
+	czyt wys wei il;
+	wyad wea;
+	czyt wys weja przep weak;
+	wyl wea  ;
+	czyt wyad wea ;
+	pisz;
+	wyl wea wyak wes il;
+	pisz wyl wea stop;
+======================================	
+
+(Ak)+(S) -> (2) /W+
+	wys weja dod weak il;
+	il;
+	wyl wea;
+	czyt wys sa wea;
+	wyak wes;
+	pisz;
