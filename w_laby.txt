@@ -215,7 +215,6 @@ SAW (L) + (Ad) -> L // skok z adresacja wzgledna wzgledem licznika rozkazow /W+
  	il;
  	wyl wea;
 	pisz; 
-======================================	
 	
 	// jezeli jest ujemna liczba w Ak 
 	wyak wes weja ode weak;
