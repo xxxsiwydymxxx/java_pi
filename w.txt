@@ -172,8 +172,10 @@ SAW (L) + (Ad) → L // skok z adresacją względną względem licznika rozkazó
 ======================================	
 
 – (AK) → (Ad)
-	wyak wes weja ode weak
-	wys weja ode weak
+	wyak wes weja ode weak wyad wea;
+	wys weja ode weak;
+	wyak wes;
+	pisz;
 ======================================	
 	
 (Ak)+((L)) → (L)+1
