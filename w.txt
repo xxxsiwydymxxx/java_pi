@@ -72,7 +72,7 @@ MIN min( (Ak), ((Ad)) ) -> Ak
 	@dodatnie wys weja przep weak wyl wea;
 ======================================	
 	
-ZAM ((Ad)) ↔ ((L)+1) // zamiana zawartości obydwu komorek /W+
+ZAM ((Ad)) <-> ((L)+1) // zamiana zawartosci obydwu komorek /W+
 	ROZKAZ ZAM;
 	Argument 1;
 	czyt wys wei il;
@@ -85,13 +85,13 @@ ZAM ((Ad)) ↔ ((L)+1) // zamiana zawartości obydwu komorek /W+
 	pisz wyl wea stop;
 ======================================	
 
-(Ak) – ((L)) -> Ak /W+
+(Ak) - ((L)) -> Ak /W+
 	wyl wea;
 	czyt wys sa wea;
 	czyt wys weja ode weak;
 ======================================	
 	
-(Ad) – (Ak) -> 1
+(Ad) - (Ak) -> 1
 	wyak wes;
 	wyad as weja przep weak;
 	wys weja ode weak;
@@ -102,7 +102,7 @@ ZAM ((Ad)) ↔ ((L)+1) // zamiana zawartości obydwu komorek /W+
 	pisz;
 ======================================	
 
-PGM jezeli (Ak) < ((Ad)) to (L) + 2 -> L w przeciwnym razie (L)+1-> L // pomiń jeden rozkaz
+PGM jezeli (Ak) < ((Ad)) to (L) + 2 -> L w przeciwnym razie (L)+1-> L // pomin jeden rozkaz
 	ROZKAZ PGM;
 	czyt wys wei il;
 	wyad wea;
@@ -112,7 +112,7 @@ PGM jezeli (Ak) < ((Ad)) to (L) + 2 -> L w przeciwnym razie (L)+1-> L // pomiń 
 	@greq KONIEC;
 ======================================	
 	
-DIS (Ak) – 1 -> Ak a nastepnie gdy (Ak) < 0 to (Ad)-> L, w przeciwnym razie (L)+1 -> L /W+
+DIS (Ak) - 1 -> Ak a nastepnie gdy (Ak) < 0 to (Ad)-> L, w przeciwnym razie (L)+1 -> L /W+
 	rozkaz DIS;
 	argumenty 1;
 	czyt wys wei il;
@@ -137,7 +137,7 @@ DIS (Ak) – 1 -> Ak a nastepnie gdy (Ak) < 0 to (Ad)-> L, w przeciwnym razie (L
 	pisz;
 ======================================	
 
-SNZ jezeli (Ak) ≠ 0 to (Ad) -> L w przeciwnym razie (L)+1 -> L // skok gdy nie zero
+SNZ jezeli (Ak) != 0 to (Ad) -> L w przeciwnym razie (L)+1 -> L // skok gdy nie zero
 	ROZKAZ SNZ;
 	Argument 1;
 	czyt wys wei il;
@@ -162,7 +162,7 @@ SAW (L) + (Ad) -> L // skok z adresacja wzgledna wzgledem licznika rozkazow /W+
 	pisz;
 ======================================	
 	
-((Ad)+1) – ((Ad)) -> Ak /W+
+((Ad)+1) - ((Ad)) -> Ak /W+
 	wyad wel wea;
 	czyt wys weja przep weak il;
 	wyak weja ode weak;
@@ -171,7 +171,7 @@ SAW (L) + (Ad) -> L // skok z adresacja wzgledna wzgledem licznika rozkazow /W+
 	czyt wys weja dod weak;
 ======================================	
 
-– (AK) -> (Ad)
+- (AK) -> (Ad)
 	wyak wes weja ode weak wyad wea;
 	wys weja ode weak;
 	wyak wes;
@@ -242,7 +242,7 @@ SAW (L) + (Ad) -> L // skok z adresacja wzgledna wzgledem licznika rozkazow /W+
 	pisz;
 ======================================	
 
-ZAM ((Ad)) ↔ ((L)+1) // zamiana zawartości obydwu komorek /W+
+ZAM ((Ad)) <-> ((L)+1) // zamiana zawartosci obydwu komorek /W+
 	ROZKAZ ZAM;
 	Argument 1;
 	czyt wys wei il;
