@@ -30,15 +30,17 @@ DDP (Ak) + (((Ad))) → Ak /W+
 
 |((L))| → Ak /W+
 	//jezeli dodatnia
-	wyl wea
+	wyl wea;
 	czyt wys sa wea;
-	czyt wys weja przep weak
+	czyt wys weja przep weak;
 	
 	//ujemna
-	wyl wea
-	czyt wys wej przep weak
-	wys weja ode weak
-	wys weja ode weak
+	wyl as weja ode weak;
+	wyak sa wel;
+	wyak weja ode weak;
+	wyl wea;
+	czyt wys sa wea;
+	czyt wys weja przep weak;
 ======================================	
 	
 |(Ak)| → (2) /W+
