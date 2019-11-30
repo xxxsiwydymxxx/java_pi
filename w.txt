@@ -48,18 +48,17 @@ DDP (Ak) + (((Ad))) → Ak /W+
 	il;
 	il;
 	wyl wea;
-	czyt wys sa wel;
-	wyl wea wyak wes;
-	pisz;
+	czyt wys sa wea;
+	wyak wes;
+	pisz;	
 	
 	//jezeli ujemna
 	wyak wes weja ode weak il;
 	wys weja ode weak il;
 	wyl wea;
-	czyt wys sa wel;
-	wyl wea;
+	czyt wys sa wea;
 	wyak wes;
-	pisz;
+	pisz;	
 ======================================	
 
 MIN min( (Ak), ((Ad)) ) → Ak
