@@ -257,7 +257,6 @@ ZAM ((Ad)) ↔ ((L)+1) // zamiana zawartości obydwu komorek /W+
 	wys weja dod weak il;
 	il;
 	wyl wea;
-	czyt wys sa wel;
-	wyl wea;
+	czyt wys sa wea;
 	wyak wes;
 	pisz;
