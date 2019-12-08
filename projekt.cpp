@@ -10,8 +10,7 @@ enum class Dzien{
 };
 struct Godzina {
     int Godzina;
-    char znak =':';
-    int Minuta; 
+    int Minuta;
 };
 struct Prowadzacy{
     string Nazwisko;
@@ -24,7 +23,7 @@ struct Zajecia{
     string Grupa;
     string Przedmiot;
     Prowadzacy* pZajecia;
-    Zajecia* pNext;    
+    Zajecia* pNext;
 };
 
 void DodajProwadzcego (Prowadzacy *& pHead, const string & nazwisko){
@@ -34,7 +33,7 @@ void DodajProwadzcego (Prowadzacy *& pHead, const string & nazwisko){
     }
     else
     {
-        
+
     }
 }
 
@@ -46,9 +45,9 @@ void DodajZajecia (Zajecia *& pHead, Godzina PoczatekZajec, Godzina KoniecZajec,
     }
     else
     {
-        
+
     }
-    
+
 }
 int main()
 {
