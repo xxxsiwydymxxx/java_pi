@@ -38,10 +38,10 @@ void DodajProwadzcego (Prowadzacy *& pHead, const string & nazwisko){
 }
 
 
-void DodajZajecia (Zajecia *& pHead, Godzina PoczatekZajec, Godzina KoniecZajec, Dzien Dzien, string Grupa, string Przedmiot){
+void DodajZajecia (Zajecia *& pHead, Godzina PoczatekZajec, Godzina KoniecZajec, Dzien DzienZajec, string Grupa, string Przedmiot){
     if (pHead == nullptr)
     {
-        pHead = new Zajecia{PoczatekZajec, KoniecZajec, Dzien, Grupa, Przedmiot, nullptr, nullptr};
+        pHead = new Zajecia{PoczatekZajec, KoniecZajec, DzienZajec, Grupa, Przedmiot, nullptr, nullptr};
     }
     else
     {
