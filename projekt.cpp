@@ -14,8 +14,10 @@ struct Prowadzacy{
 };
 
 struct Zajecia{
-    string GodzinaPocz;
-    string GodzinaKon;
+    int GodzinaPocz;
+    int MinutaPocz;
+    int GodzinaKon;
+    int MinutaKon;
     Day Dzien;
     string Grupa;
     string Przedmiot;
