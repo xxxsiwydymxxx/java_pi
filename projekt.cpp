@@ -9,7 +9,7 @@ enum class Dzien{
     pn=1, wt=2, sr=3, czw=4, pt=5, sb=6, nd=7
 };
 struct Godzina {
-    int Godzina;
+    int Godzinka;
     int Minuta;
 };
 struct Prowadzacy{
