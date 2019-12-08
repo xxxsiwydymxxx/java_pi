@@ -31,7 +31,7 @@ void dodajProwadzacego(Prowadzacy*& pHead, string Godzina, Day Dzien, string Gru
     {
         //sortowanie wg. godziny i daty
         Prowadzacy* temp = pHead;
-        if (true)
+        if ()
         {
 
         }
