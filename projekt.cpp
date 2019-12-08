@@ -27,6 +27,29 @@ struct Zajecia{
     Zajecia* pNext;    
 };
 
+void DodajProwadzcego (Prowadzacy *& pHead, const string & nazwisko){
+    if (pHead == nullptr)
+    {
+        pHead = new Prowadzacy{nazwisko, nullptr};
+    }
+    else
+    {
+        
+    }
+}
+
+
+void DodajZajecia (Zajecia *& pHead, Godzina PoczatekZajec, Godzina KoniecZajec, Dzien Dzien, string Grupa, string Przedmiot){
+    if (pHead == nullptr)
+    {
+        pHead = new Zajecia{PoczatekZajec, KoniecZajec, Dzien, Grupa, Przedmiot, nullptr, nullptr};
+    }
+    else
+    {
+        
+    }
+    
+}
 int main()
 {
     return 0;
