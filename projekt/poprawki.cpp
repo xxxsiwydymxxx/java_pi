@@ -32,12 +32,6 @@ struct Prowadzacy{
     Zajecia* pGlowaListyZajec;
 };
 
-void DodajProwadzacegoNaPoczatek (Prowadzacy *& pGlowaProwadzacego, Zajecia *& pGlowaListyZajec, string nazwisko){
-    //tylko jeden prowadzacy 
-    if (pGlowaProwadzacego->NazwiskoProwadzacego != nazwisko)
-        pGlowaProwadzacego = new Prowadzacy {nazwisko, pGlowaProwadzacego, pGlowaListyZajec};
-}
-
 Prowadzacy * ZnajdzProwadzacegoRekurencyjnie (Prowadzacy * pGlowaProwadzacego, string nazwisko){
     //jeśli istnieje
   if (pGlowaProwadzacego)
@@ -54,7 +48,26 @@ Prowadzacy * ZnajdzProwadzacegoRekurencyjnie (Prowadzacy * pGlowaProwadzacego, s
       return nullptr;
 }
 
-void DodajZajeciaProwadzacemu (Godzina Poczatek, Godzina Koniec, Dzien Dzien, string Grupa, string Przedmiot, Zajecia *& pLewyKorzen, Zajecia *& pPrawyKorzen){
+void DodajProwadzacegoNaPoczatek (Prowadzacy *& pGlowaProwadzacego, Zajecia *& pGlowaListyZajec, string nazwisko){
+    //tylko jeden prowadzacy
+    while(true)
+    {
+        auto p = pGlowaProwadzacego;
+        if(pGlowaProwadzacego->NazwiskoProwadzacego == nazwisko)
+        {
+            p = pGlowaProwadzacego->pNastepnyProwadzacy;
+        }
+        else
+        {
+            pGlowaProwadzacego = new Prowadzacy {nazwisko, pGlowaProwadzacego, pGlowaListyZajec};
+              break;
+        }
+    }
+}
+/** zwraca glowe drzewa? */
+Zajecia * DodajZajeciaProwadzacemu (Godzina Poczatek, Godzina Koniec, Dzien Dzien, string Grupa, string Przedmiot){
+
+    return nullptr;
 
 }
 
