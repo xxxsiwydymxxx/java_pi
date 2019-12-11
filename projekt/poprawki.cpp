@@ -47,16 +47,18 @@ Prowadzacy * ZnajdzProwadzacegoRekurencyjnie (Prowadzacy * pGlowaProwadzacego, s
   else
       return nullptr;
 }
-
+/** do poprawienia to dodawanie bo dwa razy to samo najlepiej odwołać się do poprzedniej funkcji*/
 void DodajProwadzacegoNaPoczatek (Prowadzacy *& pGlowaProwadzacego, Zajecia *& pGlowaListyZajec, string nazwisko){
     //tylko jeden prowadzacy
     while(true)
     {
         auto p = pGlowaProwadzacego;
-        if(pGlowaProwadzacego->NazwiskoProwadzacego == nazwisko)
+        //jesli znalezlismy takie naziwsko przejdz do kolejnego elementu listy
+        if(p->NazwiskoProwadzacego == nazwisko)
         {
-            p = pGlowaProwadzacego->pNastepnyProwadzacy;
+            p = p->pNastepnyProwadzacy;
         }
+        //dodaj prowadzacego na poczatek listy
         else
         {
             pGlowaProwadzacego = new Prowadzacy {nazwisko, pGlowaProwadzacego, pGlowaListyZajec};
