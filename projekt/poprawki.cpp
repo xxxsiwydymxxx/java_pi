@@ -8,10 +8,12 @@ using namespace std;
 enum class Dzien{
     pn=1, wt=2, sr=3, czw=4, pt=5, sb=6, nd=7
 };
+
 struct Godzina {
     int Godzinka;
     int Minuta;
 };
+
 /** element listy z zajeciami */
 struct Zajecia{
     Godzina PoczatekZajec;
@@ -22,39 +24,43 @@ struct Zajecia{
     Zajecia* pLewy;
     Zajecia* pPrawy;
 };
+
 /** element listy prowadzacych */
 struct Prowadzacy{
-    string Nazwisko;
+    string NazwiskoProwadzacego;
     Prowadzacy* pNastepnyProwadzacy;
-    Zajecia * pGlowaListyZajec;
+    Zajecia* pGlowaListyZajec;
 };
 
-void DodajProwadzcego (Prowadzacy *& pHead, string nazwisko){
-    if (not pHead)
-    {
-        pHead = new Prowadzacy{nazwisko, nullptr};
-    }
-    else
-    {
-        auto p = pHead;
-        while(p->pNastepnyProwadzacy)
-          p=p->pNastepnyProwadzacy;
-
-        p->pNastepnyProwadzacy = new Prowadzacy {Nazwisko, nullptr}
-    }
+void DodajProwadzacegoNaPoczatek (Prowadzacy *& pGlowaProwadzacego, Zajecia *& pGlowaListyZajec, string nazwisko){
+    //tylko jeden prowadzacy 
+    if (pGlowaProwadzacego->NazwiskoProwadzacego != nazwisko)
+        pGlowaProwadzacego = new Prowadzacy {nazwisko, pGlowaProwadzacego, pGlowaListyZajec};
 }
-Prowadzacy * ZnajdzProwadzacego (Prowadzacy * pHead, string nazwisko){
-  if (pHead)
+
+Prowadzacy * ZnajdzProwadzacegoRekurencyjnie (Prowadzacy * pGlowaProwadzacego, string nazwisko){
+    //jeśli istnieje
+  if (pGlowaProwadzacego)
     {
-      if (pHead->Prowadzacy == nazwisko)
-        return pHead;
+      //jeśli znaleźliśmy prowadzącego zwrócić wskaźnik
+      if (pGlowaProwadzacego->NazwiskoProwadzacego == nazwisko)
+        return pGlowaProwadzacego;
+      //jeśli nie znaleźlismy szukaj dalej
       else
-        return ZnajdzProwadzacego(pHead->pNastepnyProwadzacy, nazwisko)
+        return ZnajdzProwadzacegoRekurencyjnie(pGlowaProwadzacego->pNastepnyProwadzacy, nazwisko);
     }
-  else return nullptr;
+    //nie ma takiego prowadzacego
+  else
+      return nullptr;
 }
 
-void DodajZajecia ()
+void DodajZajeciaProwadzacemu (Godzina Poczatek, Godzina Koniec, Dzien Dzien, string Grupa, string Przedmiot, Zajecia *& pLewyKorzen, Zajecia *& pPrawyKorzen){
+
+}
+
+void Wczytaj (){
+
+}
 
 int main()
 {
