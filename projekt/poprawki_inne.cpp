@@ -43,23 +43,20 @@ Prowadzacy * ZnajdzProwadzacegoRekurencyjnie (Prowadzacy * pGlowaProwadzacego, s
       else
         return ZnajdzProwadzacegoRekurencyjnie(pGlowaProwadzacego->pNastepnyProwadzacy, nazwisko);
     }
-    //nie ma takiego prowadzacego
+    //nie ma takiego prowadzacego i zwraca nullptr
   else
       return nullptr;
 }
-/** do poprawienia to dodawanie bo dwa razy to samo najlepiej odwołać się do poprzedniej funkcji*/
 void DodajProwadzacegoNaPoczatek (Prowadzacy *& pGlowaProwadzacego, Zajecia *& pGlowaListyZajec, string nazwisko){
     //jesli nie znalezlismy to zwraca nullptr i dodaje prowadzacego na poczatku listy
-    if ((*ZnajdzProwadzacegoRekurencyjnie)(pGlowaProwadzacego, nazwisko) == 0)
+    //tylko jeden prowadzacy
+    if (ZnajdzProwadzacegoRekurencyjnie(pGlowaProwadzacego, nazwisko) == nullptr)
            pGlowaProwadzacego = new Prowadzacy {nazwisko, pGlowaProwadzacego, pGlowaListyZajec};
-
 }
 
 /** zwraca glowe drzewa? */
 Zajecia * DodajZajeciaProwadzacemu (Godzina Poczatek, Godzina Koniec, Dzien Dzien, string Grupa, string Przedmiot){
-
     return nullptr;
-
 }
 
 void Wczytaj (){
