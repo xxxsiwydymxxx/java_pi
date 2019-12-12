@@ -75,6 +75,7 @@ void DodajProwadzacegoNaPoczatek (Prowadzacy *& pGlowaListyProwadzacych, Zajecia
 /** posortowane drzewo wg. dnia*/
 //posortowac wg godziny i minuty
 //poddrzewo?
+//skad wiadomo ktore zajecia do jakiego prowadzacego
 void DodajZajeciaProwadzacemu (Zajecia*& pKorzen, Godzina PoczatekZajec, Godzina KoniecZajec, Dzien DzienZajec, string grupa, string przedmiot){
     if(not pKorzen)
         pKorzen = new Zajecia {PoczatekZajec, KoniecZajec, DzienZajec, grupa, przedmiot, nullptr, nullptr};
@@ -108,7 +109,7 @@ void WypiszZajeciaProwadzacego(Zajecia*& pKorzen){
     if (pKorzen)
     {
         WypiszZajeciaProwadzacego(pKorzen->pLewy);
-        cout   <<pKorzen->PoczatekZajec.Godzinka<<":"<<pKorzen->PoczatekZajec.Minuta<<
+        cout<<pKorzen->PoczatekZajec.Godzinka<<":"<<pKorzen->PoczatekZajec.Minuta<<
             "-"<<pKorzen->KoniecZajec.Godzinka<<":"<<pKorzen->KoniecZajec.Minuta<<
             " "<<WypiszDzien(pKorzen->DzienZajec)<<
             " "<<pKorzen->Grupa<<
@@ -121,7 +122,7 @@ void UsunWszystko(){
 
 }
 
-void Wczytaj (){
+void Wczytaj(){
 
 }
 
