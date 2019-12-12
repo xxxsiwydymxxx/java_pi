@@ -137,9 +137,10 @@ void UsunWszystko(Zajecia *& pKorzen, Prowadzacy *& pGlowaListyProwadzacych){
     if (pGlowaListyProwadzacych)
     {
         UsunDrzewo(pKorzen);
+        //przechodzimy do nastepnego prowadzacego;
         auto p = pGlowaListyProwadzacych->pNastepnyProwadzacy;
-        delete p;
-        pGlowaListyProwadzacych = p;
+        delete pGlowaListyProwadzacych;
+        pGlowaListyProwadzacych = nullptr;
         //tu powinna byc rekurencja
         UsunWszystko(pKorzen, p);
     }
