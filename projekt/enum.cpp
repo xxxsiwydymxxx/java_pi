@@ -104,7 +104,7 @@ void DodajZajeciaProwadzacemu (Zajecia*& pKorzen, Godzina PoczatekZajec, Godzina
 
 /** wypisz posortowane drzewo zajec wg. dnia i godziny dla każdego prowadzącego*/
 //inorder traversal
-void WypiszZajeciaProwadzacego(Zajecia*& pKorzen){
+void WypiszZajeciaProwadzacego(Zajecia* pKorzen){
     //jesli istnieje
     if (pKorzen)
     {
@@ -117,9 +117,32 @@ void WypiszZajeciaProwadzacego(Zajecia*& pKorzen){
         WypiszZajeciaProwadzacego(pKorzen->pPrawy);
     }
 }
+void UsunDrzewo(Zajecia *& pKorzen){
+    //jesli korzen istnieje
+    if (pKorzen)
+        {
+            //usun drzewo rekurencyjnie
+            UsunDrzewo(pKorzen->pLewy);
+            UsunDrzewo(pKorzen->pPrawy);
+            //usun korzen i wskaznik na korzen
+            delete pKorzen;
+            pKorzen = nullptr;
+        }
+}
 
-void UsunWszystko(){
-
+//usun drzewo-> wskaznik na nastepnego prowadzacego-> usun poprzedniego i wskaznik
+//potem rekurencja
+void UsunWszystko(Zajecia *& pKorzen, Prowadzacy *& pGlowaListyProwadzacych){
+    //jesli prowadzacy istnieje
+    if (pGlowaListyProwadzacych)
+    {
+        UsunDrzewo(pKorzen);
+        auto p = pGlowaListyProwadzacych->pNastepnyProwadzacy;
+        delete p;
+        pGlowaListyProwadzacych = p;
+        //tu powinna byc rekurencja
+        UsunWszystko(pKorzen, p);
+    }
 }
 
 void Wczytaj(){
