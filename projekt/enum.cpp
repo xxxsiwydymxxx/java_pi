@@ -62,7 +62,7 @@ Prowadzacy* ZnajdzProwadzacegoRekurencyjnie (Prowadzacy* pGlowaListyProwadzacych
         return nullptr;
 }
 
-void DodajProwadzacegoNaPoczatek (Prowadzacy *& pGlowaListyProwadzacych, Zajecia *& pGlowaListyZajec, string nazwisko){
+void DodajProwadzacegoNaPoczatek (Prowadzacy*& pGlowaListyProwadzacych, Zajecia*& pGlowaListyZajec, string nazwisko){
     //jeśli nie istnieje to dodaj do listy bez wskaźnika na następnego prowadzacego
     if (not pGlowaListyProwadzacych)
         pGlowaListyProwadzacych = new Prowadzacy {nazwisko, nullptr, pGlowaListyZajec};
@@ -117,7 +117,7 @@ void WypiszZajeciaProwadzacego(Zajecia* pKorzen){
         WypiszZajeciaProwadzacego(pKorzen->pPrawy);
     }
 }
-void UsunDrzewo(Zajecia *& pKorzen){
+void UsunDrzewo(Zajecia*& pKorzen){
     //jesli korzen istnieje
     if (pKorzen)
         {
@@ -133,7 +133,7 @@ void UsunDrzewo(Zajecia *& pKorzen){
 //usun drzewo-> wskaznik na nastepnego prowadzacego-> usun poprzedniego i wskaznik
 //potem rekurencja
 //czy grzebiemy w pamieci?
-void UsunWszystko(Zajecia *& pKorzen, Prowadzacy *& pGlowaListyProwadzacych){
+void UsunWszystko(Zajecia*& pKorzen, Prowadzacy*& pGlowaListyProwadzacych){
     //jesli prowadzacy istnieje
     if (pGlowaListyProwadzacych)
     {
