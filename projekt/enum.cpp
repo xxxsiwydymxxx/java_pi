@@ -36,13 +36,13 @@ struct Prowadzacy{
 string WypiszDzien(Dzien DzienZajec){
     switch(DzienZajec)
     {
-    case pn: return "pn";
-    case wt: return "wt";
-    case sr: return "sr";
-    case cz: return "cz";
-    case pt: return "pt";
-    case sb: return "sb";
-    case nd: return "nd";
+        case pn: return "pn";
+        case wt: return "wt";
+        case sr: return "sr";
+        case cz: return "cz";
+        case pt: return "pt";
+        case sb: return "sb";
+        case nd: return "nd";
     }
 }
 
@@ -72,50 +72,33 @@ void DodajProwadzacegoNaPoczatek (Prowadzacy *& pGlowaListyProwadzacych, Zajecia
     else if (ZnajdzProwadzacegoRekurencyjnie(pGlowaListyProwadzacych, nazwisko) == nullptr)
         pGlowaListyProwadzacych = new Prowadzacy {nazwisko, pGlowaListyProwadzacych, pGlowaListyZajec};
 }
-
-/** wskaźnik na korzeń drzewa binarnego */
-//zrobić warunki dla godzin i minut
-// lewo = pKorzen->pLewy
-// if (PoczatekZajec > lewo->PoczatekZajec)
-// lewo->pLewy
-// else lewo->pPrawy i to samo dla drugiej strony?
-Zajecia* DodajZajeciaProwadzacemu (Zajecia* pKorzen, Godzina PoczatekZajec, Godzina KoniecZajec, Dzien DzienZajec, string grupa, string przedmiot){
-    if (not pKorzen)
+/** posortowane drzewo wg. dnia*/
+//posortowac wg godziny i minuty
+//poddrzewo?
+void DodajZajeciaProwadzacemu (Zajecia*& pKorzen, Godzina PoczatekZajec, Godzina KoniecZajec, Dzien DzienZajec, string grupa, string przedmiot){
+    if(not pKorzen)
+        pKorzen = new Zajecia {PoczatekZajec, KoniecZajec, DzienZajec, grupa, przedmiot, nullptr, nullptr};
+    else
     {
-        Zajecia * temp = new Zajecia;
-        temp->PoczatekZajec.Godzinka = PoczatekZajec.Godzinka;
-        temp->PoczatekZajec.Minuta = PoczatekZajec.Minuta;
-        temp->DzienZajec = DzienZajec;
-        temp->KoniecZajec.Godzinka = KoniecZajec.Godzinka;
-        temp->KoniecZajec.Minuta = KoniecZajec.Minuta;
-        temp->Grupa = grupa;
-        temp->Przedmiot = przedmiot;
-        //temp->dla wszystkich?
-        temp->pLewy = temp->pPrawy = nullptr;
-        return temp;
-    }
-    auto Prawo = pKorzen->pPrawy;
-    auto Lewo = pKorzen->pLewy;
-    //posortowac wg. minut
-    if(DzienZajec > (pKorzen->DzienZajec))
-    {
-        if(PoczatekZajec.Godzinka and PoczatekZajec.Minuta > (pKorzen->PoczatekZajec.Godzinka and pKorzen->PoczatekZajec.Minuta))
+        auto p = pKorzen;
+        while(
+            (DzienZajec<p->DzienZajec/* mamy isc w lewo */ and p->pLewy/* sciezka w lewo istnieje */)
+            or
+            (DzienZajec<=p->DzienZajec/* mamy isc w prawo */ and p->pPrawy/* sciezka w prawo istnieje*/)
+             )
         {
-            Prawo->pPrawy = DodajZajeciaProwadzacemu(Prawo->pPrawy, PoczatekZajec, KoniecZajec, DzienZajec, grupa, przedmiot);
+            //przesuniecie na nastepny wezel
+            if(DzienZajec < p->DzienZajec)
+                p = p->pLewy;
+            else
+                p = p->pPrawy;
         }
+        //p wskazuje na poprzednik elementu do wstawienia
+        if(DzienZajec< p->DzienZajec)
+            p->pLewy = new Zajecia {PoczatekZajec, KoniecZajec, DzienZajec, grupa, przedmiot, nullptr, nullptr};
         else
-            Prawo->pLewy = DodajZajeciaProwadzacemu(Prawo->pLewy, PoczatekZajec, KoniecZajec, DzienZajec, grupa, przedmiot);
+            p->pPrawy = new Zajecia {PoczatekZajec, KoniecZajec, DzienZajec, grupa, przedmiot, nullptr, nullptr};
     }
-    else if (DzienZajec <= (pKorzen->DzienZajec))
-    {
-        if(PoczatekZajec.Godzinka and PoczatekZajec.Minuta <= (pKorzen->PoczatekZajec.Godzinka and pKorzen->PoczatekZajec.Minuta))
-        {
-            Lewo->pLewy = DodajZajeciaProwadzacemu(Lewo->pLewy, PoczatekZajec, KoniecZajec, DzienZajec, grupa, przedmiot);
-        }
-        else
-            Lewo->pPrawy = DodajZajeciaProwadzacemu(Lewo->pPrawy, PoczatekZajec, KoniecZajec, DzienZajec, grupa, przedmiot);
-    }
-    return pKorzen;
 }
 
 /** wypisz posortowane drzewo zajec wg. dnia i godziny dla każdego prowadzącego*/
@@ -125,7 +108,7 @@ void WypiszZajeciaProwadzacego(Zajecia*& pKorzen){
     if (pKorzen)
     {
         WypiszZajeciaProwadzacego(pKorzen->pLewy);
-        cout<<pKorzen->PoczatekZajec.Godzinka<<":"<<pKorzen->PoczatekZajec.Minuta<<
+        cout   <<pKorzen->PoczatekZajec.Godzinka<<":"<<pKorzen->PoczatekZajec.Minuta<<
             "-"<<pKorzen->KoniecZajec.Godzinka<<":"<<pKorzen->KoniecZajec.Minuta<<
             " "<<WypiszDzien(pKorzen->DzienZajec)<<
             " "<<pKorzen->Grupa<<
@@ -135,11 +118,11 @@ void WypiszZajeciaProwadzacego(Zajecia*& pKorzen){
 }
 
 void UsunWszystko(){
-    
+
 }
 
 void Wczytaj (){
-    
+
 }
 
 int main()
