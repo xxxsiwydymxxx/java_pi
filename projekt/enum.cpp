@@ -132,6 +132,7 @@ void UsunDrzewo(Zajecia *& pKorzen){
 
 //usun drzewo-> wskaznik na nastepnego prowadzacego-> usun poprzedniego i wskaznik
 //potem rekurencja
+//czy grzebiemy w pamieci?
 void UsunWszystko(Zajecia *& pKorzen, Prowadzacy *& pGlowaListyProwadzacych){
     //jesli prowadzacy istnieje
     if (pGlowaListyProwadzacych)
