@@ -13,20 +13,16 @@ string WypiszDzien(Dzien DzienZajec);
 
 Prowadzacy* ZnajdzProwadzacegoRekurencyjnie (Prowadzacy* pGlowaListyProwadzacych, string nazwisko);
 
-Prowadzacy* DodajProwadzacegoNaPoczatek (Prowadzacy*& pGlowaListyProwadzacych,/* Zajecia*& pKorzen,*/ string nazwisko);
+Prowadzacy* DodajProwadzacegoNaKoniecListy (Prowadzacy*& pGlowaListyProwadzacych, string nazwisko);
 
 void DodajZajeciaProwadzacemu (Zajecia*& pKorzen, Godzina& PoczatekZajec, Godzina& KoniecZajec, Dzien& DzienZajec, string& grupa, string& przedmiot);
-
-void DodajZajeciaProwadzacemu2 (Zajecia*& pKorzen, Godzina PoczatekZajec, Godzina KoniecZajec, Dzien DzienZajec, string grupa, string przedmiot);
 
 void WypiszZajeciaProwadzacego(Zajecia* pKorzen);
 
 void UsunDrzewo(Zajecia*& pKorzen);
 
-void UsunWszystko(Zajecia*& pKorzen, Prowadzacy*& pGlowaListyProwadzacych);
+void UsunWszystko(Prowadzacy*& pGlowaListyProwadzacych);
 
-void Wczytaj();
+void Wczytaj(Prowadzacy*& pGlowaListyProwadzacych, string nazwisko, Godzina PoczatekZajec, Godzina KoniecZajec, Dzien DzienZajec, string grupa, string przedmiot);
 
 #endif
-
-

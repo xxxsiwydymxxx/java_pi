@@ -23,11 +23,7 @@ main.o : main.cpp
 	            
 funkcje.o : funkcje.cpp
 	$(kompilator) $(standard) $(debug) $(optymalizacja) $(errors) -c -o $@ $^ 
-		
-
-########################
-		
- 
+	
 	
 clean : 	
 	for f in `ls *.o *~ ` ; do  if [ -f $$f ] ; then rm $$f  ; fi;   done;

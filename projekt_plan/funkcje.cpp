@@ -9,7 +9,7 @@ using namespace std;
 #include "struktury.h"
 #include "funkcje.h"
 
-/** funkcja porwnujaca dzien nastepnie godzine zajec a potem minute */
+/** */
 bool Mniejsza(const Zajecia & pLewy, const Zajecia & pPrawy)
 {
     if(pLewy.DzienZajec < pPrawy.DzienZajec)
@@ -26,24 +26,24 @@ bool Mniejsza(const Zajecia & pLewy, const Zajecia & pPrawy)
         {
             if(pLewy.PoczatekZajec.Minuta < pPrawy.PoczatekZajec.Minuta)
                 return true;
-            else //if(pLewy.PoczatekZajec.Minuta >= pPrawy.PoczatekZajec.Minuta)
+            else 
                 return false;
         }
     }
-  //  return false;
 }
 
 /** funkcja wypisujaca enum jako string */
 string WypiszDzien(Dzien DzienZajec){
     switch(DzienZajec)
     {
-        case pn: return "pn";
-        case wt: return "wt";
-        case sr: return "sr";
-        case cz: return "cz";
-        case pt: return "pt";
-        case sb: return "sb";
-        case nd: return "nd";
+        case pn: return "pn"; break;
+        case wt: return "wt"; break;
+        case sr: return "sr"; break;
+        case cz: return "cz"; break;
+        case pt: return "pt"; break;
+        case sb: return "sb"; break;
+        case nd: return "nd"; break;
+        default: return ""; break;
     }
 }
 /** funkcja zwracajaca wskaznik na szukanego prowadzacego */
@@ -62,23 +62,13 @@ Prowadzacy* ZnajdzProwadzacegoRekurencyjnie (Prowadzacy* pGlowaListyProwadzacych
     else
         return nullptr;
 }
-/** funkcja dodajaca prowadzacego na poczatek listy jednokierunkowej */
-Prowadzacy* DodajProwadzacegoNaPoczatek (Prowadzacy*& pGlowaListyProwadzacych, /*Zajecia*& pKorzen,*/ string nazwisko)
+/** funkcja dodajaca prowadzacego na koniec listy jednokierunkowej */
+Prowadzacy* DodajProwadzacegoNaKoniecListy (Prowadzacy*& pGlowaListyProwadzacych, string nazwisko)
 {
-    return pGlowaListyProwadzacych = new Prowadzacy {nazwisko, pGlowaListyProwadzacych, nullptr };
-    
-   /* 
-    
-    //jeśli nie istnieje to dodaj do listy bez wskaźnika na następnego prowadzacego
-    if (not pGlowaListyProwadzacych)
-        pGlowaListyProwadzacych = new Prowadzacy {nazwisko, nullptr, pKorzen};
-    //dodaj na poczatek listy ze wskaznikiem na nastepnego prowadzacego i wskaznikiem na liste zajec
-    //tak aby byl tylko jeden o takim samym nazwisku prowadzacy
-    //ZnajdzProwadzacegoRekurencyjnie jesli nie znajdzie nazwiska zwraca nullptr
-    else if (ZnajdzProwadzacegoRekurencyjnie(pGlowaListyProwadzacych, nazwisko) == nullptr)
-        pGlowaListyProwadzacych = new Prowadzacy {nazwisko, pGlowaListyProwadzacych, pKorzen};
-    
-    */
+    if(not pGlowaListyProwadzacych)
+        return pGlowaListyProwadzacych = new Prowadzacy {nazwisko, nullptr, nullptr };
+    else
+        return DodajProwadzacegoNaKoniecListy(pGlowaListyProwadzacych->pNastepnyProwadzacy, nazwisko);
 }
 /** funkcja ktora dodaje posortowane zajecia */
 void DodajZajeciaProwadzacemu (Zajecia*& pKorzen, Godzina& PoczatekZajec, Godzina& KoniecZajec, Dzien& DzienZajec, string& grupa, string& przedmiot)
@@ -93,7 +83,6 @@ void DodajZajeciaProwadzacemu (Zajecia*& pKorzen, Godzina& PoczatekZajec, Godzin
       while(true)
       {
           if (Mniejsza (*pNowy, *p))  // nowy jest mniejszy od p
-        //if(Mniejsza(*p->pLewy,*p->pPrawy) ==true)
         {
           if(p->pLewy)
             p = p->pLewy;
@@ -115,33 +104,6 @@ void DodajZajeciaProwadzacemu (Zajecia*& pKorzen, Godzina& PoczatekZajec, Godzin
         }
       }
    }
-}
-
-void DodajZajeciaProwadzacemu2 (Zajecia*& pKorzen, Godzina PoczatekZajec, Godzina KoniecZajec, Dzien DzienZajec, string grupa, string przedmiot)
-{
-    if(not pKorzen)
-        pKorzen = new Zajecia {PoczatekZajec, KoniecZajec, DzienZajec, grupa, przedmiot, nullptr, nullptr};
-    else
-    {
-        auto p = pKorzen;
-        while(
-            (DzienZajec<p->DzienZajec/* mamy isc w lewo */ and p->pLewy/* sciezka w lewo istnieje */)
-            or
-            (DzienZajec<=p->DzienZajec/* mamy isc w prawo */ and p->pPrawy/* sciezka w prawo istnieje*/)
-             )
-        {
-            //przesuniecie na nastepny wezel
-            if(DzienZajec < p->DzienZajec)
-                p = p->pLewy;
-            else
-                p = p->pPrawy;
-        }
-        //p wskazuje na poprzednik elementu do wstawienia
-        if(DzienZajec< p->DzienZajec)
-            p->pLewy = new Zajecia {PoczatekZajec, KoniecZajec, DzienZajec, grupa, przedmiot, nullptr, nullptr};
-        else
-            p->pPrawy = new Zajecia {PoczatekZajec, KoniecZajec, DzienZajec, grupa, przedmiot, nullptr, nullptr};
-    }
 }
 
 /** funkcja wypisujaca posortowane zajecia prowadzacego*/
@@ -177,18 +139,24 @@ void UsunDrzewo(Zajecia*& pKorzen){
 
 //usun drzewo-> wskaznik na nastepnego prowadzacego-> usun poprzedniego i wskaznik
 //potem rekurencja
-//czy grzebiemy w pamieci?
 /** funkcja usuwajaca liste i wszystkie drzewa */
-void UsunWszystko(Zajecia*& pKorzen, Prowadzacy*& pGlowaListyProwadzacych){
+void UsunWszystko(Prowadzacy*& pGlowaListyProwadzacych){
     //jesli prowadzacy istnieje
     if (pGlowaListyProwadzacych)
     {
-        UsunDrzewo(pKorzen);
+        UsunDrzewo(pGlowaListyProwadzacych->pKorzenListyZajec);
         //przechodzimy do nastepnego prowadzacego;
         auto p = pGlowaListyProwadzacych->pNastepnyProwadzacy;
         delete pGlowaListyProwadzacych;
         pGlowaListyProwadzacych = nullptr;
         //krok rekurencyjny przechodzacy do nastepnego prowadzacego
-        UsunWszystko(pKorzen, p);
+        UsunWszystko(p);
     }
+}
+
+void Wczytaj(Prowadzacy*& pGlowaListyProwadzacych, string nazwisko, Godzina PoczatekZajec, Godzina KoniecZajec, Dzien DzienZajec, string grupa, string przedmiot){
+    Prowadzacy* p = ZnajdzProwadzacegoRekurencyjnie(pGlowaListyProwadzacych, nazwisko);
+        if (not p)
+        p = DodajProwadzacegoNaKoniecListy(pGlowaListyProwadzacych, nazwisko);
+    DodajZajeciaProwadzacemu(p->pKorzenListyZajec, PoczatekZajec, KoniecZajec, DzienZajec, grupa, przedmiot);
 }
