@@ -1,0 +1,102 @@
+POB A 
+PETLA: ODE B  
+SOM Koniec
+SOB Petla  
+
+KONIEC: DOD B 
+STP
+
+A: RST 13
+B: RST 4
+
+
+
+//max w tab
+
+POB Tab
+ŁAD Max
+
+PETLA: 
+POB N
+ODE Jeden
+SOM Koniec
+ŁAD N
+
+
+
+Rozkaz:
+POB Tab
+ODE Max
+SOM Dalej
+DOD Max
+ŁAD Max
+
+Dalej: POB Rozkaz
+DOD Jeden
+ŁAD Rozkaz
+SOB Petla
+
+Koniec: POB Max
+STP
+
+
+N:      RST 4
+Tab:    RST 11
+        RST 34
+        RST 33
+        RST 22
+Max:   RPA
+Jeden:  RST 1
+
+//suma kwadratow
+
+SumaKwadratow: POB Ilosc
+DNS
+SDP Kwadrat
+PZS
+DOD Suma
+ŁAD Suma
+POB Ilosc
+ODE Jeden
+ŁAD Ilosc
+SOZ Koniec
+SOB SumaKwadratow
+
+Koniec: POB Suma
+STP
+
+Suma: RST 0
+Ilosc: RST 11
+Jeden: RST 1 
+
+
+Kwadrat: 
+PZS 
+ŁAD Adres
+PZS
+ŁAD Liczba  
+SOZ Zero 
+ŁAD Mnozenie 
+ŁAD Liczba 
+
+Petla: ODE Jeden 
+SOZ Powrot
+ŁAD Licznik
+POB Mnozenie
+DOD Liczba
+ŁAD Mnozenie
+POB Licznik
+SOB Petla
+
+Powrot: POB Mnozenie
+DNS
+POB Adres
+DNS
+PWR
+
+Zero: PWR   
+ 
+Liczba: RPA
+Mnozenie: RPA
+Licznik: RPA 
+Adres: RPA
