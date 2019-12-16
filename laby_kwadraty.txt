@@ -75,7 +75,7 @@ PZS
 ŁAD Adres
 PZS
 ŁAD Liczba  
-SOZ Zero 
+SOZ Powrot 
 ŁAD Mnozenie 
 ŁAD Liczba 
 
@@ -92,9 +92,7 @@ Powrot: POB Mnozenie
 DNS
 POB Adres
 DNS
-PWR
-
-Zero: PWR   
+PWR  
  
 Liczba: RPA
 Mnozenie: RPA
