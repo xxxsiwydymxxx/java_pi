@@ -1,3 +1,5 @@
+//reszta z dzielenia
+
 POB A 
 PETLA: ODE B  
 SOM Koniec
@@ -16,13 +18,11 @@ B: RST 4
 POB Tab
 ŁAD Max
 
-PETLA: 
+Petla: 
 POB N
 ODE Jeden
 SOM Koniec
 ŁAD N
-
-
 
 Rozkaz:
 POB Tab
