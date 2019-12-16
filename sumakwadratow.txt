@@ -1,0 +1,48 @@
+SumaKwadratow: POB Ilosc
+DNS
+SDP Kwadrat
+PZS
+DOD Suma
+ŁAD Suma
+POB Ilosc
+ODE Jeden
+ŁAD Ilosc
+SOZ Koniec
+SOB SumaKwadratow
+
+Koniec: POB Suma
+STP
+
+Suma: RST 0
+Ilosc: RST 4
+Jeden: RST 1 
+
+
+Kwadrat: 
+PZS 
+ŁAD Adres
+PZS
+ŁAD Liczba  
+SOZ Powrot 
+ŁAD Mnozenie 
+ŁAD Liczba 
+
+Petla: ODE Jeden 
+SOZ Powrot
+ŁAD Licznik
+POB Mnozenie
+DOD Liczba
+ŁAD Mnozenie
+POB Licznik
+SOB Petla
+
+Powrot: POB Mnozenie
+DNS
+POB Adres
+DNS
+PWR  
+ 
+Liczba: RPA
+Mnozenie: RPA
+Licznik: RPA 
+Adres: RPA
