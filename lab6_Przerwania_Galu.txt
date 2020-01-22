@@ -1,3 +1,13 @@
+Wejściówka z przerwań: jest podany rejestr zgłoszeń i maska, trzeba podać stan rejestru przerwań
+
+Dobra to tak: na laborkach jest podany program wypisujący a bez końca, przerwanie 1 ma wypisać n jedynek itd
+. a 4 przerwanie kończy program. 
+Na 3 trzeba zrobić aby program był niewywłaszczalny (każde przerwanie ustala maskę na 1111), 
+na 4 przerwania mają być wywłaszczalne, czyli np dla n=5 jak naciśnie się 3 i zdąży wypisać trzy trójki 
+a potem naciśnie się 2 to ma się wypisać 3332222233, czyli poprzednie przerwanie również jest dokańczane. 
+Na 5 wystarczy zrobić zliczanie wywołań przerwań i wypisanie liczby wystąpień poszczególnych przerwań po naciśnięciu 4
+
+
 NA 5:============================================================================
 
 //PRZERYWANIA
