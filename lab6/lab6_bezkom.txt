@@ -1,0 +1,486 @@
+Wejściówka z przerwań: jest podany rejestr zgłoszeń i maska, trzeba podać stan rejestru przerwań
+
+Dobra to tak: na laborkach jest podany program wypisujący a bez końca, przerwanie 1 ma wypisać n jedynek itd
+. a 4 przerwanie kończy program. 
+Na 3 trzeba zrobić aby program był niewywłaszczalny (każde przerwanie ustala maskę na 1111), 
+na 4 przerwania mają być wywłaszczalne, czyli np dla n=5 jak naciśnie się 3 i zdąży wypisać trzy trójki 
+a potem naciśnie się 2 to ma się wypisać 3332222233, czyli poprzednie przerwanie również jest dokańczane. 
+Na 5 wystarczy zrobić zliczanie wywołań przerwań i wypisanie liczby wystąpień poszczególnych przerwań po naciśnięciu 4
+
+
+NA 5:============================================================================
+
+             SOB PROGRAM
+             SOB PRZERW1
+             SOB PRZERW2
+             SOB PRZERW3
+             SOB PRZERW4
+			 
+PROGRAM:     WPR 1
+             ŁAD ZNAK
+PENTLA0:     POB ZNAK
+             WYP 2
+             SOB PENTLA0
+
+KONIEC:      POB NEWLINE
+             WYP 2
+             POB ILE1
+             DOD ZNAK0
+             WYP 2
+             POB ILE2
+             DOD ZNAK0
+             WYP 2
+             POB ILE3
+             DOD ZNAK0
+             WYP 2
+             STP
+
+PRZERW1:     CZM MASKA1
+             MAS 15
+             DNS
+             POB ILE1
+             DOD JEDEN
+             ŁAD ILE1
+             POB ILERAZY
+             ŁAD TEMP1
+PENTLA1:     POB TEMP1
+             ODE JEDEN
+             ŁAD TEMP1
+             SOM DALEJ1
+             POB JEDEN
+             DOD ZNAK0
+             WYP 2
+             SOB PENTLA1             
+DALEJ1:      PZS
+             MSK MASKA1
+             PWR
+//
+PRZERW2:     CZM MASKA2
+             MAS 7
+             DNS
+             POB ILE2
+             DOD JEDEN
+             ŁAD ILE2
+             POB ILERAZY
+             ŁAD TEMP2
+PENTLA2:     POB TEMP2
+             ODE JEDEN
+             ŁAD TEMP2
+             SOM DALEJ2
+             POB DWA
+             DOD ZNAK0
+             WYP 2
+             SOB PENTLA2             
+DALEJ2:      PZS
+             MSK MASKA2
+             PWR
+//
+PRZERW3:     CZM MASKA3
+             MAS 3
+             DNS
+             POB ILE3
+             DOD JEDEN
+             ŁAD ILE3
+             POB ILERAZY
+             ŁAD TEMP3
+PENTLA3:     POB TEMP3
+             ODE JEDEN
+             ŁAD TEMP3
+             SOM DALEJ3
+             POB TRZY
+             DOD ZNAK0
+             WYP 2
+             SOB PENTLA3             
+DALEJ3:      PZS
+             MSK MASKA3
+             PWR
+
+PRZERW4:     SOB KONIEC
+
+MASKA1:      RPA
+MASKA2:      RPA
+MASKA3:      RPA
+ZNAK:        RPA
+ILERAZY:     RST 5
+TEMP1:       RPA
+TEMP2:       RPA
+TEMP3:       RPA
+ZNAK0:       RST '0'
+NEWLINE:     RST 10
+JEDEN:       RST 1
+DWA:         RST 2
+TRZY:        RST 3
+CZTERY:      RST 4
+ILE1:        RST 0
+ILE2:        RST 0
+ILE3:        RST 0
+
+NA 4:=====================================================================
+
+             SOB PROGRAM
+             SOB PRZERW1
+             SOB PRZERW2
+             SOB PRZERW3
+             SOB PRZERW4
+			 
+PROGRAM:     POB ZNAKA 
+             ŁAD ZNAK
+PENTLA0:     POB ZNAK
+             WYP 2
+             SOB PENTLA0
+
+KONIEC:     STP
+
+PRZERW1:     CZM MASKA1
+             MAS 15
+             DNS
+             POB ILERAZY
+             ŁAD TEMP1
+PENTLA1:     POB TEMP1
+             ODE JEDEN
+             ŁAD TEMP1
+             SOM DALEJ1
+             POB JEDEN
+             DOD ZNAK0
+             WYP 2
+             SOB PENTLA1             
+DALEJ1:      PZS
+             MSK MASKA1
+             PWR
+//
+PRZERW2:     CZM MASKA2
+             MAS 7
+             DNS
+             POB ILERAZY
+             ŁAD TEMP2
+PENTLA2:     POB TEMP2
+             ODE JEDEN
+             ŁAD TEMP2
+             SOM DALEJ2
+             POB DWA
+             DOD ZNAK0
+             WYP 2
+             SOB PENTLA2             
+DALEJ2:      PZS
+             MSK MASKA2
+             PWR
+//
+PRZERW3:     CZM MASKA3
+             MAS 3
+             DNS
+             POB ILERAZY
+             ŁAD TEMP3
+PENTLA3:     POB TEMP3
+             ODE JEDEN
+             ŁAD TEMP3
+             SOM DALEJ3
+             POB TRZY
+             DOD ZNAK0
+             WYP 2
+             SOB PENTLA3             
+DALEJ3:      PZS
+             MSK MASKA3
+             PWR
+
+PRZERW4:     SOB KONIEC
+MASKA1:      RPA
+MASKA2:      RPA
+MASKA3:      RPA
+ZNAK:        RPA
+ILERAZY:     RST 5
+TEMP1:       RPA
+TEMP2:       RPA
+TEMP3:       RPA
+ZNAKA:       RST 'a'
+ZNAK0:       RST '0'
+NEWLINE:     RST 10
+JEDEN:       RST 1
+DWA:         RST 2
+TRZY:        RST 3
+CZTERY:      RST 4
+ILE1:        RST 0
+ILE2:        RST 0
+ILE3:        RST 0
+
+NA3:===============================================================================
+
+             SOB PROGRAM
+             SOB PRZERW1
+             SOB PRZERW2
+             SOB PRZERW3
+             SOB PRZERW4
+			 
+PROGRAM:     POB ZNAKA 
+             ŁAD ZNAK
+PENTLA0:     POB ZNAK
+             WYP 2
+             SOB PENTLA0
+
+KONIEC:     STP
+
+PRZERW1:     CZM MASKA1
+             MAS 15
+             DNS
+             POB ILERAZY
+             ŁAD TEMP1
+PENTLA1:     POB TEMP1
+             ODE JEDEN
+             ŁAD TEMP1
+             SOM DALEJ1
+             POB JEDEN
+             DOD ZNAK0
+             WYP 2
+             SOB PENTLA1             
+DALEJ1:      PZS
+             MSK MASKA1
+             PWR
+//
+PRZERW2:     CZM MASKA2
+             MAS 15
+             DNS
+             POB ILERAZY
+             ŁAD TEMP2
+PENTLA2:     POB TEMP2
+             ODE JEDEN
+             ŁAD TEMP2
+             SOM DALEJ2
+             POB DWA
+             DOD ZNAK0
+             WYP 2
+             SOB PENTLA2             
+DALEJ2:      PZS
+             MSK MASKA2
+             PWR
+//
+PRZERW3:     CZM MASKA3
+             MAS 15
+             DNS
+             POB ILERAZY
+             ŁAD TEMP3
+PENTLA3:     POB TEMP3
+             ODE JEDEN
+             ŁAD TEMP3
+             SOM DALEJ3
+             POB TRZY
+             DOD ZNAK0
+             WYP 2
+             SOB PENTLA3             
+DALEJ3:      PZS
+             MSK MASKA3
+             PWR
+
+PRZERW4:     SOB KONIEC
+
+MASKA1:      RPA
+MASKA2:      RPA
+MASKA3:      RPA
+ZNAK:        RPA
+ILERAZY:     RST 5
+TEMP1:       RPA
+TEMP2:       RPA
+TEMP3:       RPA
+ZNAKA:       RST 'a'
+ZNAK0:       RST '0'
+
+JEDEN:       RST 1
+DWA:         RST 2
+TRZY:        RST 3
+CZTERY:      RST 4
+
+
+1. Napisać program wypisujący na ekran pojedynczy znak w pętli. Zgłoszenie przerwania powinno
+poskutkować wyświetleniem jego numeru na ekranie.
+
+           SOB PROGRAM
+           SOB PRZERW1
+           SOB PRZERW2
+           SOB PRZERW3
+           SOB PRZERW4
+
+PROGRAM:   POB ZNAK
+           WYP 2
+           SOB PROGRAM
+KONIEC:    STP
+
+MASKA:     RPA
+ZNAK:      RST 'A'
+ZNAK0:     RST '0'
+JEDEN:     RST 1
+DWA:       RST 2
+TRZY:      RST 3
+CZTERY:    RST 4
+
+PRZERW1:   CZM MASKA  
+           MAS 15    
+           DNS        
+           POB JEDEN
+           DOD ZNAK0
+           WYP 2
+           PZS        
+           MSK MASKA  
+           PWR       
+
+PRZERW2:   CZM MASKA  
+           MAS 15     
+           DNS        
+           POB DWA
+           DOD ZNAK0
+           WYP 2
+           PZS        
+           MSK MASKA  
+           PWR
+//        
+PRZERW3:   CZM MASKA  
+           MAS 15     
+           DNS        
+           POB TRZY
+           DOD ZNAK0
+           WYP 2
+           PZS        
+           MSK MASKA  
+           PWR
+//      
+PRZERW4:   CZM MASKA  
+           MAS 15     
+           DNS
+           POB CZTERY
+           DOD ZNAK0
+           WYP 2
+           PZS        
+           MSK MASKA  
+           PWR
+
+2. Wykorzystując program z poprzedniego laboratorium (rysowanie kształtów), uzupełnić go
+o obsługę przerwań, polegającą na:
+a) wyświetlaniu numeru przerwania w momencie jego pojawiania się,
+b) zliczaniu ilości wystąpień każdego z przerwań i wypisaniu ich na koniec pracy
+programu,
+c) zakończenia pracy programu na skutek wyświetlenia całej figury lub przekroczenia
+przez któryś z liczników wartości będącej dwukrotnością numeru danego przerwania
+(2, 4, 6, 8).
+
+           SOB PROGRAM
+           SOB PRZERW1
+           SOB PRZERW2
+           SOB PRZERW3
+           SOB PRZERW4
+		  
+PROGRAM:      WPR 1
+              ŁAD ZNAK
+              WPR 1
+              ODE Z0
+              ŁAD BOK
+              ŁAD TMP
+              ŁAD TMP2
+              SOZ KONIEC
+WYPISZ:       POB TMP
+              ODE JEDEN
+              ŁAD TMP
+              SOM LINIA
+              POB ZNAK
+              WYP 2
+              SOB WYPISZ
+LINIA:        POB TMP2
+              ODE JEDEN
+              ŁAD TMP2
+              SOZ KONIEC 
+              POB BOK
+              ŁAD TMP
+              POB NLINIA
+              WYP 2
+              SOB WYPISZ
+
+KONIEC:       POB NLINIA
+              WYP 2
+              POB ILE1
+              DOD ZNAK0
+              WYP 2
+              POB ILE2
+              DOD ZNAK0
+              WYP 2
+              POB ILE3
+              DOD ZNAK0
+              WYP 2
+              POB ILE4
+              DOD ZNAK0
+              WYP 2
+              STP
+
+MASKA:        RPA
+NLINIA:       RST 10
+ZNAK:         RPA
+BOK:          RPA
+Z0:           RST 48
+TMP:          RPA 
+TMP2:         RPA
+JEDEN:        RST 1
+DWA:          RST 2
+TRZY:         RST 3
+CZTERY:       RST 4
+SZEŚĆ:        RST 6
+OSIEM:        RST 8
+ZNAK0:        RST '0'
+ILE1:         RST 0
+ILE2:         RST 0
+ILE3:         RST 0
+ILE4:         RST 0
+
+PRZERW1:   CZM MASKA  
+           MAS 15     
+           DNS        
+           POB ILE1
+           DOD JEDEN
+           ŁAD ILE1
+           ODE DWA
+           SOZ KONIEC
+           POB JEDEN
+           DOD ZNAK0
+           WYP 2
+           PZS        
+           MSK MASKA  
+           PWR        
+
+PRZERW2:   CZM MASKA  
+           MAS 15     
+           DNS
+           POB ILE2
+           DOD JEDEN
+           ŁAD ILE2
+           ODE CZTERY
+           SOZ KONIEC
+           POB DWA
+           DOD ZNAK0
+           WYP 2
+           PZS        
+           MSK MASKA  
+           PWR
+      
+PRZERW3:   CZM MASKA  
+           MAS 15     
+           DNS
+           POB ILE3
+           DOD JEDEN
+           ŁAD ILE3
+           ODE SZEŚĆ
+           SOZ KONIEC
+           POB TRZY
+           DOD ZNAK0
+           WYP 2
+           PZS        
+           MSK MASKA  
+           PWR
+      
+PRZERW4:   CZM MASKA  
+           MAS 15     
+           DNS
+           POB ILE4
+           DOD JEDEN
+           ŁAD ILE4
+           ODE OSIEM
+           SOZ KONIEC
+           POB CZTERY
+           DOD ZNAK0
+           WYP 2
+           PZS        
+           MSK MASKA  
+           PWR          
